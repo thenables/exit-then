@@ -24,7 +24,7 @@ process.on('uncaughtException', function (err) {
 function onexit(err) {
   if (!(err instanceof Error)) err = null
   Promise.all(fns.map(function (fn) {
-    fn(err)
+    return fn(err)
   })).then(function () {
     process.exit(0)
   }).catch(function (err) {

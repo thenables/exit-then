@@ -11,8 +11,18 @@ if (global.EXIT_THEN_1) {
 }
 
 var Promise = require('native-or-bluebird')
+var timeout = require('timeout-then')
 
 var fns = module.exports = []
+
+/**
+ * Custom minimum timeout interval.
+ */
+
+var EXIT_TIMEOUT = parseInt(process.env.EXIT_TIMEOUT, 0) || 0
+if (EXIT_TIMEOUT) fns.push(function () {
+  return timeout(EXIT_TIMEOUT)
+})
 
 process.on('SIGINT', onexit)
 process.on('SIGTERM', onexit)

@@ -16,6 +16,15 @@ var timeout = require('timeout-then')
 var fns = module.exports = []
 
 /**
+ * Make a global version based on version.
+ */
+ 
+global.EXIT_THEN_1 = {
+  fns: fns,
+  onexit: onexit
+}
+
+/**
  * Custom minimum timeout interval.
  */
 

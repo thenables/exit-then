@@ -12,13 +12,14 @@ if (global.EXIT_THEN_1) {
 
 var Promise = require('native-or-bluebird')
 var timeout = require('timeout-then')
+var onExit = require('signal-exit')
 
 var fns = module.exports = []
 
 /**
  * Make a global version based on version.
  */
- 
+
 global.EXIT_THEN_1 = {
   fns: fns,
   onexit: onexit
@@ -33,14 +34,16 @@ if (EXIT_TIMEOUT) fns.push(function () {
   return timeout(EXIT_TIMEOUT)
 })
 
-process.on('SIGINT', onexit)
-process.on('SIGTERM', onexit)
+onExit(onexit)
 process.on('uncaughtException', function (err) {
   console.error(err.stack)
   onexit(err)
 })
 
+var exited = false
 function onexit(err) {
+  if (exited) return
+  exited = true
   if (!(err instanceof Error)) err = null
   Promise.all(fns.map(function (fn) {
     return fn(err)

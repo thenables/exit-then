@@ -7,6 +7,7 @@
   "repository": "thenables/exit-then",
   "dependencies": {
     "native-or-bluebird": "1",
+    "signal-exit": "^1.2.0",
     "timeout-then": "^1.0.0"
   },
   "devDependencies": {

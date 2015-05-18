@@ -5,7 +5,6 @@
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
-[![Gittip][gittip-image]][gittip-url]
 
 Execute promises before exiting a process.
 Useful for cleaning up a process right before it quits.
@@ -40,5 +39,3 @@ fns.push(function () {
 [license-url]: LICENSE
 [downloads-image]: http://img.shields.io/npm/dm/exit-then.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/exit-then
-[gittip-image]: https://img.shields.io/gratipay/jonathanong.svg?style=flat-square
-[gittip-url]: https://gratipay.com/jonathanong/

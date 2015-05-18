@@ -1,3 +1,4 @@
+'use strict'
 
 /**
  * Don't allow multiple copies of this module
@@ -10,11 +11,11 @@ if (global.EXIT_THEN_1) {
   return
 }
 
-var Promise = require('native-or-bluebird')
-var timeout = require('timeout-then')
-var onExit = require('signal-exit')
+const Promise = require('native-or-bluebird')
+const timeout = require('timeout-then')
+const onExit = require('signal-exit')
 
-var fns = module.exports = []
+const fns = module.exports = []
 
 /**
  * Make a global version based on version.
@@ -29,7 +30,7 @@ global.EXIT_THEN_1 = {
  * Custom minimum timeout interval.
  */
 
-var EXIT_TIMEOUT = parseInt(process.env.EXIT_TIMEOUT, 0) || 0
+const EXIT_TIMEOUT = parseInt(process.env.EXIT_TIMEOUT, 0) || 0
 if (EXIT_TIMEOUT) fns.push(function () {
   return timeout(EXIT_TIMEOUT)
 })
@@ -40,7 +41,7 @@ process.on('uncaughtException', function (err) {
   onexit(err)
 })
 
-var exited = false
+let exited = false
 function onexit(err) {
   if (exited) return
   exited = true

@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "thenables/exit-then",
   "dependencies": {
-    "native-or-bluebird": "1",
+    "native-or-bluebird": "1.2.0",
     "signal-exit": "^2.1.2",
     "timeout-then": "^1.0.0"
   },
